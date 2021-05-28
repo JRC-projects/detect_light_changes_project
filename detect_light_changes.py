@@ -20,6 +20,9 @@ Press Ctrl+C to exit!
 
 def light_list_compare(light_level, light_list):
     """ Returns bool, true if light is out of range, false if not"""
+    if len(lux_list) >= 10:
+        return False # not yet enough values
+    
     fixing_factor = 2 
 
     min_light = min(light_list)
