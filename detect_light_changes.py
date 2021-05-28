@@ -17,6 +17,27 @@ logging.info("""light.py - Monitoring Light sensor.
 Press Ctrl+C to exit!
 """)
 
+
+def light_list_compare(light_level, light_list):
+    """ Returns bool, true if light is out of range, false if not"""
+    fixing_factor = 2 
+
+    min_light = min(light_list)
+    max_light = max(light_list)*fixing_factor
+
+    if light_level > max_light:
+        output_bool = True
+    else:
+        output_bool = False
+
+    return output_bool
+
+
+def do_something():
+    print("oi who's that, turn that light off!!!")
+    return None
+
+
 lux_list = []
 
 try:
@@ -41,21 +62,3 @@ except KeyboardInterrupt:
 
 
 
-def light_list_compare(light_level, light_list):
-    """ Returns bool, true if light is out of range, false if not"""
-    fixing_factor = 2 
-
-    min_light = min(light_list)
-    max_light = max(light_list)*fixing_factor
-
-    if light_level > max_light:
-        output_bool = True
-    else:
-        output_bool = False
-
-    return output_bool
-
-
-def do_something():
-    print("oi who's that, turn that light off!!!")
-    return None
