@@ -1,5 +1,6 @@
 import time
 import logging
+import os, sys
 try:
     # Transitional fix for breaking change in LTR559
     from ltr559 import LTR559
@@ -36,31 +37,47 @@ def light_list_compare(light_level, light_list):
     return output_bool
 
 
-def do_something():
+def do_something_print():
     print("oi who's that, turn that light off!!!")
     return None
 
 
-lux_list = []
+def do_something_play_sound():
 
-try:
-    while True:
-        lux = ltr559.get_lux()
+    sound_file = "./shreck_annoying.mp3"
+    os.system(f"omxplayer -o hdmi {sound_file}")
+
+
+
+
+def main_fun():
         
-        logging.info("""Light: {:05.02f} Lux""".format(lux))
-        time.sleep(1.0)
-        
-        # Compare current value to historic list
-        if light_list_compare(lux,lux_list):
-            do_something()
+    lux_list = []
 
-        lux_list.append(lux)
+    try:
+        while True:
+            lux = ltr559.get_lux()
+            
+            logging.info("""Light: {:05.02f} Lux""".format(lux))
+            time.sleep(1.0)
+            
+            # Compare current value to historic list
+            if light_list_compare(lux,lux_list):
+                do_something_print()
 
-        if len(lux_list) >= 10:
-            lux_list = lux_list[1:10] # removes first value if list is 10 long (or longer)
+            lux_list.append(lux)
+
+            if len(lux_list) >= 10:
+                lux_list = lux_list[1:10] # removes first value if list is 10 long (or longer)
 
 
-except KeyboardInterrupt:
-    pass
+    except KeyboardInterrupt:
+        pass
+
+
+if __name__ == "main":
+    main_fun()
+
+
 
 
