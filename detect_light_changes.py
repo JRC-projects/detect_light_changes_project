@@ -75,7 +75,7 @@ def main_fun():
         pass
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     main_fun()
 
 
