@@ -65,6 +65,7 @@ def main_fun():
             # Compare current value to historic list
             if light_list_compare(lux,lux_list):
                 do_something_print()
+                do_something_play_sound()
 
             lux_list.append(lux)
 
