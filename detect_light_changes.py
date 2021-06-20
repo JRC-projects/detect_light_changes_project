@@ -46,7 +46,7 @@ def do_something_play_sound():
 
     sound_file = "./shreck_annoying.mp3"
     # os.system(f"omxplayer -o hdmi {sound_file}")
-    os.system("omxplayer -o hdmi shreck_annoying.mp3")
+    os.system("omxplayer -o local shreck_annoying.mp3")
 
 
 
